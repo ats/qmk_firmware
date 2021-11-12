@@ -94,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      TG(VIM),            KC_BRID,  KC_BRIU,  KC_TASK,  KC_FLXP,  RGB_VAD,  RGB_VAI,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,  KC_VOLU,  KC_TRNS,  KC_TRNS,
      KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_HOME,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,
      RGB_TOG,  RGB_MOD,  C(KC_RGHT),  RGB_HUI,  RGB_SAI,  RGB_SPI,  KC_PGUP,  KC_TRNS,  TG(VIM),  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,
-     KC_TRNS,  RGB_RMOD, RGB_VAD,  RGB_HUD,  RGB_SAD,  RGB_SPD,  KC_LEFT,  KC_DOWN,  KC_UP,  KC_RGHT,  KC_TRNS,  KC_TRNS,            KC_TRNS,            KC_END,
+     KC_TRNS,  KC_TRNS, RGB_VAD,  RGB_HUD,  RGB_SAD,  RGB_SPD,  KC_LEFT,  KC_DOWN,  KC_UP,  KC_RGHT,  KC_TRNS,  KC_TRNS,            KC_TRNS,            KC_END,
      KC_TRNS,            KC_LTTOG, KC_DEL, KC_TKTOG, KC_FCTOG, C(KC_LEFT),  KC_PGDN,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,
      KC_TRNS,  KC_TRNS,  KC_TRNS,                                KC_TRNS,                                KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS)
 		
@@ -189,7 +189,37 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
       }
    }
-    
+
+ // vim equivalent for a (right, insert) and shift-a (end, insert)
+    case KC_A: { 
+      static uint8_t kc;
+      if (layer_state_is(VIM)) {
+        if (record->event.pressed) {
+          if (get_mods() & MOD_MASK_SHIFT) {
+            del_mods(MOD_MASK_SHIFT);
+	    send_string(SS_TAP(X_END));
+	    layer_invert(VIM);
+          } else {
+            kc = KC_RGHT;
+	    send_string(SS_TAP(X_RGHT));
+	    layer_invert(VIM);
+          }
+        } else {
+        unregister_code(kc);
+        }
+	return false;
+      } else {
+      // do this if layer state is not vim
+        if (record->event.pressed) {
+          register_code(KC_A);
+        } else {
+          unregister_code(KC_A);
+        }
+        return false;
+      }
+   }
+
+   // default
    default:
      return true;  // Process all other keycodes normally
    }
