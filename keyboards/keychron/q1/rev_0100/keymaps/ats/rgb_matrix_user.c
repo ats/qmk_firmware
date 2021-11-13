@@ -55,6 +55,9 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
             break;
 	case VIM:
 	    rgb_matrix_set_color_by_keycode(led_min, led_max, current_layer, is_not_transparent, FN_LAYER_COLOR);
+	    if (get_fn_layer_transparent_keys_off()) {
+		rgb_matrix_set_color_by_keycode(led_min, led_max, current_layer, is_transparent, RGB_OFF);
+	    }
 	    break;
     }
 }
