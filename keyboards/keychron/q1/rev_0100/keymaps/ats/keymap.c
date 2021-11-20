@@ -93,25 +93,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [VIM] = LAYOUT_ansi_82(
      TG(VIM),            KC_BRID,  KC_BRIU,  KC_TASK,  KC_FLXP,  RGB_VAD,  RGB_VAI,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,  KC_VOLU,  KC_TRNS,  KC_TRNS,
      KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_HOME,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,
-     RGB_TOG,  RGB_MOD,  C(KC_RGHT),  RGB_HUI,  RGB_SAI, KC_SPI,  KC_COPY,  KC_UNDO,  TG(VIM),  KC_TRNS,  KC_PASTE,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,
+     RGB_TOG,  RGB_MOD,  C(KC_RGHT),  RGB_HUI,  RGB_SAI, RGB_SPI,  KC_COPY,  KC_UNDO,  TG(VIM),  KC_TRNS,  KC_PASTE,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,
      KC_TRNS,  KC_TRNS, RGB_VAD,  KC_CUT,  RGB_SAD,  RGB_SPD,  KC_LEFT,  KC_DOWN,  KC_UP,  KC_RGHT,  KC_TRNS,  KC_TRNS,            KC_TRNS,            KC_END,
-     KC_TRNS,            KC_LTTOG, KC_DEL, KC_TKTOG, KC_FCTOG, C(KC_LEFT),  KC_PGDN,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,
-     KC_TRNS,  KC_TRNS,  KC_TRNS,                                KC_TRNS,                                KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS)
+     KC_TRNS,            KC_LTTOG, KC_DEL, KC_TKTOG, TG(VIM_MVMT), C(KC_LEFT),  KC_PGDN,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,
+     KC_TRNS,  KC_TRNS,  KC_TRNS,                                KC_TRNS,                                KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS),
 		
- 
-
-};
 /* enter VIM_MVMT with v on VIM layer
- * 
- * [VIM_MVMT] = LAYOUT_ansi_82(
-     TG(VIM),            KC_BRID,  KC_BRIU,  KC_TASK,  KC_FLXP,  RGB_VAD,  RGB_VAI,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,  KC_VOLU,  KC_TRNS,  KC_TRNS,
-     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_HOME,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,
-     RGB_TOG,  RGB_MOD,  RCS(KC_RGHT),  RGB_HUI,  RGB_SAI,  RGB_SPI,  KC_COPY,  KC_TRNS,  TG(VIM),  KC_TRNS,  KC_PASTE,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,
-     KC_TRNS,  KC_TRNS, RGB_VAD,  RGB_HUD,  RGB_SAD,  RGB_SPD,  LS(KC_LEFT),  LS(KC_DOWN),  LS(KC_UP),  LS(KC_RGHT),  KC_TRNS,  KC_TRNS,            KC_TRNS,            KC_END,
-     KC_TRNS,            KC_LTTOG, KC_DEL, KC_TKTOG, KC_FCTOG, RCS(KC_LEFT),  KC_PGDN,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,
+ * */
+[VIM_MVMT] = LAYOUT_ansi_82(
+     TO(VIM),            KC_BRID,  KC_BRIU,  KC_TASK,  KC_FLXP,  RGB_VAD,  RGB_VAI,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,  KC_VOLU,  KC_TRNS,  KC_TRNS,
+     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_HOME,  KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS,
+     RGB_TOG,  RGB_MOD,  RCS(KC_RGHT),  RGB_HUI,  RGB_SAI,  RGB_SPI,  KC_COPY,  KC_TRNS,  TO(VIM),  KC_TRNS,  KC_PASTE,  KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS,
+     KC_TRNS,  KC_TRNS, RGB_VAD,  RGB_HUD,  RGB_SAD,  RGB_SPD,  LSFT(KC_LEFT),  LSFT(KC_DOWN),  LSFT(KC_UP),  LSFT(KC_RGHT),  KC_TRNS,  KC_TRNS,   KC_TRNS,            KC_END,
+     KC_TRNS,            KC_LTTOG, KC_DEL, KC_TKTOG, TO(VIM), RCS(KC_LEFT),  KC_PGDN,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,
      KC_TRNS,  KC_TRNS,  KC_TRNS,                                KC_TRNS,                                KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS)
      
- */ 
+
+};
 	
 // clang-format on
 

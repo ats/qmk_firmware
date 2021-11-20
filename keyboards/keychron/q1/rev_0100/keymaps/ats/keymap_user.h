@@ -23,7 +23,8 @@ enum layers {
     MAC_FN,
     WIN_BASE,
     WIN_FN,
-    VIM
+    VIM,
+    VIM_MVMT
 };
 
 // clang-format on
