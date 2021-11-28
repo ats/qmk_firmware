@@ -59,7 +59,13 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 		rgb_matrix_set_color_by_keycode(led_min, led_max, current_layer, is_transparent, RGB_OFF);
 	    }
 	    break;
-    }
+    	case VIM_MVMT:
+	    rgb_matrix_set_color_by_keycode(led_min, led_max, current_layer, is_not_transparent, VIM_MVMT_COLOR);
+	    if (get_fn_layer_transparent_keys_off()) {
+		rgb_matrix_set_color_by_keycode(led_min, led_max, current_layer, is_transparent, RGB_OFF);
+	    }
+	    break;
+}
 }
 
 void rgb_matrix_set_color_by_keycode(uint8_t led_min, uint8_t led_max, uint8_t layer, bool (*is_keycode)(uint16_t), uint8_t red, uint8_t green, uint8_t blue) {
